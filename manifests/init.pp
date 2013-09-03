@@ -2,11 +2,26 @@
 #
 # === Parameters
 #
-# TODO: Add parameters
+# [path] The path to install phpmyadmin to (default: /srv/phpmyadmin)
+# [user] The user that should own that directory (default: www-data)
+# [servers] An array of servers (default: [])
 #
 # === Examples
 #
-# TODO: Add examples
+#  class { 'phpmyadmin':
+#    path => "/srv/phpmyadmin",
+#    user => "www-data",
+#    servers => [
+#      {
+#        desc => "local",
+#        host => "127.0.0.1",
+#      },
+#      {
+#        desc => "other",
+#        host => "192.168.1.30",
+#      }
+#    ]
+#  }
 #
 # === Authors
 #
