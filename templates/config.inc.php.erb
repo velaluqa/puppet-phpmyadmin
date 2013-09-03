@@ -1,0 +1,12 @@
+<?php
+$cfg['blowfish_secret'] = 'ba17c1ec07d65003';
+
+$i=0;
+$i++;
+<% @servers.each do |server| %>
+  $cfg['Servers'][$i]['auth_type'] = 'cookie';
+  /* Server parameters */
+  $cfg['Servers'][$i]['host'] = '<%= server["host"] %>';
+  $i++;
+<% end %>
+?>
