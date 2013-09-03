@@ -26,6 +26,7 @@ web server (e.g. puppet-nginx)
     ]
   }
 ```
+
 ## Contribute
 
 Want to help - send a pull request.
