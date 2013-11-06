@@ -1,5 +1,5 @@
 name    'puppet-phpmyadmin'
-version '0.0.3'
+version '0.0.4'
 source  'https://github.com/leoc/puppet-phpmyadmin'
 author  'Arthur Leonard Andersen'
 license 'GPLv3'

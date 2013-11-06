@@ -39,9 +39,14 @@ class phpmyadmin (
   $user = "www-data",
   $servers = []
 ) {
+  if !defined(Package['git']) {
+    package { 'git': ensure => present; }
+  }
+
   file { $path:
     ensure => "directory",
     owner => $user,
+    require => Package['git'],
   }
 
   exec { "phpmyadmin-checkout":
