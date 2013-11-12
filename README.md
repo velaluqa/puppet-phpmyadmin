@@ -11,7 +11,7 @@ web server (e.g. puppet-nginx)
 ## Suggested Preparation
 
 This module is as simple as possible. You should be able to choose
-your own php installation. This is my own, which works quite find, as
+your own php installation. This is my own, which works quite fine, as
 I find:
 
 1. First I install the
@@ -48,10 +48,10 @@ puppet module install puppetlabs/nginx
 
 ```
   class { 'phpmyadmin':
-    path    => "/srv/phpmyadmin",
-    user    => "www-data",
-    version => "RELEASE_4_0_9",
-    servers => [
+    path     => "/srv/phpmyadmin",
+    user     => "www-data",
+    revision => "RELEASE_4_0_9",
+    servers  => [
       {
         desc => "local",
         host => "127.0.0.1",
