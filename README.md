@@ -48,8 +48,9 @@ puppet module install puppetlabs/nginx
 
 ```
   class { 'phpmyadmin':
-    path => "/srv/phpmyadmin",
-    user => "www-data",
+    path    => "/srv/phpmyadmin",
+    user    => "www-data",
+    version => "RELEASE_4_0_9",
     servers => [
       {
         desc => "local",

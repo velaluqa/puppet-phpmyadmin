@@ -9,9 +9,10 @@
 # === Examples
 #
 #  class { 'phpmyadmin':
-#    path => "/srv/phpmyadmin",
-#    user => "www-data",
-#    servers => [
+#    path     => "/srv/phpmyadmin",
+#    user     => "www-data",
+#    revision => "RELEASE_4_0_9",
+#    servers  => [
 #      {
 #        desc => "local",
 #        host => "127.0.0.1",
@@ -37,6 +38,7 @@
 class phpmyadmin (
   $path = "/srv/phpmyadmin",
   $user = "www-data",
+  $revision = 'origin/STABLE',
   $servers = []
 ) {
   vcsrepo { $path:
@@ -44,7 +46,7 @@ class phpmyadmin (
     provider => 'git',
     source   => 'https://github.com/phpmyadmin/phpmyadmin.git',
     user     => $user,
-    revision => 'origin/STABLE',
+    revision => $revision,
   }
   ->
   file { "phpmyadmin-conf":
