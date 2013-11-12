@@ -39,35 +39,17 @@ class phpmyadmin (
   $user = "www-data",
   $servers = []
 ) {
-  if !defined(Package['git']) {
-    package { 'git': ensure => present; }
+  vcsrepo { $path:
+    ensure   => present,
+    provider => 'git',
+    source   => 'https://github.com/phpmyadmin/phpmyadmin.git',
+    user     => $user,
+    revision => 'origin/STABLE',
   }
-
-  file { $path:
-    ensure => "directory",
-    owner => $user,
-    require => Package['git'],
-  }
-
-  exec { "phpmyadmin-checkout":
-    path => "/bin:/usr/bin",
-    creates => "$path/.git",
-    command => "git clone https://github.com/phpmyadmin/phpmyadmin.git ${path}",
-    require => File[$path],
-    user => $user,
-  }
-
-  exec { "phpmyadmin-upgrade":
-    path => "/bin:/usr/bin",
-    command => "bash -c 'cd ${path}; git fetch; git checkout origin/STABLE'",
-    require => Exec["phpmyadmin-checkout"],
-    user => $user,
-  }
-
+  ->
   file { "phpmyadmin-conf":
     path => "$path/config.inc.php",
     content => template("phpmyadmin/config.inc.php.erb"),
     owner => $user,
-    require => Exec["phpmyadmin-upgrade"],
   }
 } # Class:: phpmyadmin
