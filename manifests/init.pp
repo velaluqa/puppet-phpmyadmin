@@ -39,7 +39,8 @@ class phpmyadmin (
   $path = "/srv/phpmyadmin",
   $user = "www-data",
   $revision = 'origin/STABLE',
-  $servers = []
+  $servers = [],
+  $depth = 0,
 ) {
   vcsrepo { $path:
     ensure   => present,
@@ -47,6 +48,7 @@ class phpmyadmin (
     source   => 'https://github.com/phpmyadmin/phpmyadmin.git',
     user     => $user,
     revision => $revision,
+    depth    => $depth,
   }
   ->
   file { "phpmyadmin-conf":
