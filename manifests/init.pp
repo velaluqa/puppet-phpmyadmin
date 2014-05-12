@@ -2,9 +2,11 @@
 #
 # === Parameters
 #
-# [path] The path to install phpmyadmin to (default: /srv/phpmyadmin)
-# [user] The user that should own that directory (default: www-data)
-# [servers] An array of servers (default: [])
+# [path] The path to install phpmyadmin to (default: /srv/phpmyadmin).
+# [user] The user that should own that directory (default: www-data).
+# [revision] The revision  (default: origin/STABLE).
+# [servers] An array of servers (default: []).
+# [depth] The depth for cloning the repository with (default: 0).
 #
 # === Examples
 #
@@ -36,11 +38,11 @@
 #
 #
 class phpmyadmin (
-  $path = "/srv/phpmyadmin",
-  $user = "www-data",
+  $path     = '/srv/phpmyadmin',
+  $user     = 'www-data',
   $revision = 'origin/STABLE',
-  $servers = [],
-  $depth = 0,
+  $servers  = [],
+  $depth    = 0,
 ) {
   vcsrepo { $path:
     ensure   => present,
@@ -51,9 +53,9 @@ class phpmyadmin (
     depth    => $depth,
   }
   ->
-  file { "phpmyadmin-conf":
-    path => "$path/config.inc.php",
-    content => template("phpmyadmin/config.inc.php.erb"),
-    owner => $user,
+  file { 'phpmyadmin-conf':
+    path    => "${path}/config.inc.php",
+    content => template('phpmyadmin/config.inc.php.erb'),
+    owner   => $user,
   }
 } # Class:: phpmyadmin
