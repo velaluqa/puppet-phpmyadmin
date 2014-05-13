@@ -12,4 +12,5 @@ group :development, :test do
   gem 'rspec-puppet',           require: false
   gem 'puppetlabs_spec_helper', require: false
   gem 'simplecov',              require: false
+  gem 'puppet-blacksmith',      require: false
 end
