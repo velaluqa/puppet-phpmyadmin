@@ -6,4 +6,4 @@ license 'GPLv3'
 summary 'Puppet PhpMyAdmin Module'
 description 'Module to install PhpMyAdmin.'
 project_page 'https://github.com/velaluqa/puppet-phpmyadmin/'
-dependency "puppetlabs/vcsrepo", ">=0.2.0"
+dependency "puppetlabs/vcsrepo", "1.x"
