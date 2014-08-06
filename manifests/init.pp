@@ -6,7 +6,7 @@
 # [user] The user that should own that directory (default: www-data).
 # [revision] The revision  (default: origin/STABLE).
 # [servers] An array of servers (default: []).
-# [depth] The depth for cloning the repository with (default: 0).
+# [depth] The depth for cloning the repository with (default: 1).
 #
 # === Examples
 #
@@ -42,7 +42,7 @@ class phpmyadmin (
   $user     = 'www-data',
   $revision = 'origin/STABLE',
   $servers  = [],
-  $depth    = 0,
+  $depth    = 1,
 ) {
   file { $path:
     ensure => directory,
