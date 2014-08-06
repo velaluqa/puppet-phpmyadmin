@@ -42,11 +42,14 @@ class phpmyadmin (
   $revision = 'origin/STABLE',
   $servers  = [],
 ) {
+
   file { $path:
     ensure => directory,
     owner  => $user,
   }
+
   ->
+
   vcsrepo { $path:
     ensure   => present,
     provider => 'git',
@@ -54,10 +57,13 @@ class phpmyadmin (
     user     => $user,
     revision => $revision,
   }
+
   ->
+
   file { 'phpmyadmin-conf':
     path    => "${path}/config.inc.php",
     content => template('phpmyadmin/config.inc.php.erb'),
     owner   => $user,
   }
+
 } # Class:: phpmyadmin
