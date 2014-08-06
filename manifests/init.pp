@@ -44,6 +44,11 @@ class phpmyadmin (
   $servers  = [],
   $depth    = 0,
 ) {
+  file { $path:
+    ensure => directory,
+    owner  => $user,
+  }
+  ->
   vcsrepo { $path:
     ensure   => present,
     provider => 'git',
