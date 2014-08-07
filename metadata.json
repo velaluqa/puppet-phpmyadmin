@@ -1,6 +1,6 @@
 {
   "name": "velaluqa-phpmyadmin",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "author": "Arthur Leonard Andersen",
   "summary": "Puppet PhpMyAdmin Module",
   "license": "GPLv3",
