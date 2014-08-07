@@ -3,7 +3,5 @@
 pkg/
 .ruby-version
 .ruby-gemset
-metadata.json
 Gemfile.lock
-
 /coverage/
