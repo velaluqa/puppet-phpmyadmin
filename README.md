@@ -44,6 +44,14 @@ puppet module install puppetlabs/nginx
 5. At last you may set up your vhost. This is depending on the server
    module you are using.
 
+## Installation
+
+Install the module with
+
+```
+puppet module install velaluqa/phpmyadmin
+```
+
 ## Usage
 
 ```
