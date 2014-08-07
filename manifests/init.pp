@@ -51,7 +51,7 @@ class phpmyadmin (
   ->
 
   vcsrepo { $path:
-    ensure   => present,
+    ensure   => latest,
     provider => 'git',
     source   => 'https://github.com/phpmyadmin/phpmyadmin.git',
     user     => $user,
