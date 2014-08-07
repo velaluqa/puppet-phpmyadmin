@@ -2,16 +2,17 @@
 #
 # === Parameters
 #
-# [path] The path to install phpmyadmin to (default: /srv/phpmyadmin)
-# [user] The user that should own that directory (default: www-data)
-# [servers] An array of servers (default: [])
+# [path] The path to install phpmyadmin to (default: /srv/phpmyadmin).
+# [user] The user that should own that directory (default: www-data).
+# [revision] The revision  (default: origin/STABLE).
+# [servers] An array of servers (default: []).
 #
 # === Examples
 #
 #  class { 'phpmyadmin':
 #    path     => "/srv/phpmyadmin",
 #    user     => "www-data",
-#    revision => "RELEASE_4_0_9",
+#    revision => "origin/RELEASE_4_0_9",
 #    servers  => [
 #      {
 #        desc => "local",
@@ -36,24 +37,33 @@
 #
 #
 class phpmyadmin (
-  $path = "/srv/phpmyadmin",
-  $user = "www-data",
+  $path     = '/srv/phpmyadmin',
+  $user     = 'www-data',
   $revision = 'origin/STABLE',
-  $servers = [],
-  $depth = 0,
+  $servers  = [],
 ) {
+
+  file { $path:
+    ensure => directory,
+    owner  => $user,
+  }
+
+  ->
+
   vcsrepo { $path:
-    ensure   => present,
+    ensure   => latest,
     provider => 'git',
     source   => 'https://github.com/phpmyadmin/phpmyadmin.git',
     user     => $user,
     revision => $revision,
-    depth    => $depth,
   }
+
   ->
-  file { "phpmyadmin-conf":
-    path => "$path/config.inc.php",
-    content => template("phpmyadmin/config.inc.php.erb"),
-    owner => $user,
+
+  file { 'phpmyadmin-conf':
+    path    => "${path}/config.inc.php",
+    content => template('phpmyadmin/config.inc.php.erb'),
+    owner   => $user,
   }
+
 } # Class:: phpmyadmin

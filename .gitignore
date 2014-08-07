@@ -1,9 +1,7 @@
-.idea
 .vagrant
 *.swp
 pkg/
-.rvmrc
-metadata.json
-.redcar
+.ruby-version
+.ruby-gemset
 Gemfile.lock
-
+/coverage/

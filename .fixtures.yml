@@ -1,0 +1,5 @@
+fixtures:
+  forge_modules:
+    vcsrepo:
+      repo: 'puppetlabs/vcsrepo'
+      ref: '1'

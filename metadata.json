@@ -1,0 +1,14 @@
+{
+  "name": "velaluqa-phpmyadmin",
+  "version": "1.0.0",
+  "author": "Arthur Leonard Andersen",
+  "summary": "Puppet PhpMyAdmin Module",
+  "license": "GPLv3",
+  "source": "https://github.com/velaluqa/puppet-phpmyadmin",
+  "project_page": "https://github.com/velaluqa/puppet-phpmyadmin/",
+  "issues_url": "https://github.com/velaluqa/puppet-phpmyadmin/issues",
+  "description": "Module to install PhpMyAdmin",
+  "dependencies": [
+    { "name": "puppetlabs/vcsrepo", "version_requirement":"1.x" }
+  ]
+}
