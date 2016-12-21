@@ -1,3 +1,8 @@
+# UNMAINTAINED
+
+Since we stopped using puppet for our infrastructure, we are not going to 
+maintain this solution anymore.
+
 # Puppet-phpmyadmin
 
 A puppet module to easily deploy phpmyadmin. Make sure you have a
