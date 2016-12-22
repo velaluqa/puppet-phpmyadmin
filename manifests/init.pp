@@ -56,6 +56,7 @@ class phpmyadmin (
     source   => 'https://github.com/phpmyadmin/phpmyadmin.git',
     user     => $user,
     revision => $revision,
+    depth => 1
   }
 
   ->
