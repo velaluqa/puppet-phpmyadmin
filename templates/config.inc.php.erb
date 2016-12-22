@@ -1,11 +1,12 @@
 <?php
-  $cfg['blowfish_secret'] = 'ba17c1ec07d65003';
+  $cfg['blowfish_secret'] = '<%= (1..50).map{(rand(86)+40).chr}.join.gsub(/\\/,'\&\&') %>';
 
   $i=0;
 
-  <% @servers.each do |server| %>
+  <% @servers.each do |server| -%>
   $i++;
-  $cfg['Servers'][$i]['auth_type'] = 'cookie';
-  $cfg['Servers'][$i]['host']      = '<%= server["host"] %>';
+    <% server.each do |property, value| -%>
+  $cfg['Servers'][$i]['<%= property %>'] = '<%= value %>';
+    <% end -%>
   <% end %>
 ?>

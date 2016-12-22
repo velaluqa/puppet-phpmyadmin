@@ -43,9 +43,21 @@ class phpmyadmin (
   $servers  = [],
 ) {
 
+  exec { "PMA install dir ${path}":
+    user      => 'root',
+    command   => "mkdir -p ${path}",
+    unless    => "test -d ${path}",
+    path      => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', '/usr/local/bin'],
+    logoutput => 'on_failure',
+  }
+
+  ->
+
   file { $path:
     ensure => directory,
     owner  => $user,
+    group  => $user,
+    mode   => '0755',
   }
 
   ->
